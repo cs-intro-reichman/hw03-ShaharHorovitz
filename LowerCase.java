@@ -5,11 +5,6 @@ public class LowerCase {
         System.out.println(lowerCase(str));
     }
 
-   /**
-    * Returns a string which is identical to the original string, 
-    * except that all the upper-case letters are converted to lower-case letters.
-    * Non-letter characters are left as is.
-    */
     public static String lowerCase(String s) {
     String only_lower = "";
     for(int i =0; i<s.length(); i++){ //runs on the the string to check each charcter
