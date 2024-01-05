@@ -20,13 +20,14 @@ public class Calendar1 {
 	    int debugDaysCounter = 0; 
 	    //// Write the necessary initialization code, and replace the condition
 	    //// of the while loop with the necessary condition 
-	 	while (true) {
+	 	while (year != 2000) 
+	 	{
 	 		//// Write the body of the while 		
-	 		advance();
+	 		advance(dayOfMonth, month, year);
 	 		debugDaysCounter++;
 	 		//// If you want to stop the loop after n days, replace the condition of the
 	 		//// if statement with the condition (debugDaysCounter == n)
-	 		if (false) { 
+	 		if (debugDaysCounter==1) { 
 	 			break;
 	 		}
         }
@@ -36,13 +37,40 @@ public class Calendar1 {
 	 // Advances the date (day, month, year) and the day-of-the-week.
 	 // If the month changes, sets the number of days in this month.
 	 // Side effects: changes the static variables dayOfMonth, month, year, dayOfWeek, nDaysInMonth.
-	 private static void advance() {
-		// Replace this comment with your code
-	 } 
+	 private static void advance(int day, int month, int year) {
+	 	for(int i =1; i<=12; i++)
+	 	{ 
+	 		for (int j = 1; j<=nDaysInMonth(i,year); j++)
+	 		{
+	 			if (dayOfWeek == 1)
+	 			{
+	 				System.out.println(j + "/" +month +"/" + year + " Sunday");
+	 				dayOfWeek++;
+	 			}
+	 			else if (dayOfWeek ==7)
+	 			{
+	 				System.out.println(j + "/" +month +"/" + year);
+	 				dayOfWeek=1;
+	 			}
+	 			else 
+	 			{
+	 				System.out.println(j + "/" +month +"/" + year);
+	 				dayOfWeek++;
+	 			}
+	 			
+	 		}
+	 		month++;
+		}
+		year++;
+}
+			
 		 
     // Returns true if the given year is a leap year, false otherwise.
 	private static boolean isLeapYear(int year) {
-	    // Replace the following statement with your code
+	    if ((year %4 ==0)&& (year %100 != 0 || year %400 ==0))
+	    {
+	    	return true;
+	    }
 		return false;
 	}
 	 
@@ -50,8 +78,29 @@ public class Calendar1 {
 	// April, June, September, and November have 30 days each.
 	// February has 28 days in a common year, and 29 days in a leap year.
 	// All the other months have 31 days.
-	private static int nDaysInMonth(int month, int year) {
-		// Replace the following statement with your code
-		return 0;
+	private static int nDaysInMonth(int month, int year) { //function returns the number of days in a month
+		if (month ==2){ //checks the month of february
+			if(isLeapYear(year)){
+				return 29; //if it's a leap year then return 29
+			}
+			else {
+				return 28; //if not a leap year then return 28;
+			}
+		}
+		if (month %2 ==0 && month >7)
+		{
+			return 31;
+		}
+		if (month % 2 == 0 && month < 7)
+		{
+			return 30;
+		}
+		if (month %2 ==1 && month <=7)
+		{
+			return 31;
+		}
+		else {
+			return 30;
+		}
 	}
 }
