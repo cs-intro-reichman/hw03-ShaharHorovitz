@@ -1,4 +1,4 @@
-/** String processing exercise 1. */
+//** String processing exercise 1. */
 public class LowerCase {
     public static void main(String[] args) 
     {  
@@ -21,6 +21,6 @@ public class LowerCase {
     		only_lower = only_lower + s.charAt(i); //if it's a digit, leave it 
     	}
     }
-        return only_lower
+        return only_lower;
     }
 }
