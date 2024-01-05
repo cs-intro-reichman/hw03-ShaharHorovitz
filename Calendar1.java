@@ -17,44 +17,52 @@ public class Calendar1 {
 		// Advances the date and the day-of-the-week from 1/1/1900 till 31/12/1999, inclusive.
 	    // Prints each date dd/mm/yyyy in a separate line. If the day is a Sunday, prints "Sunday".
 	    // The following variable, used for debugging purposes, counts how many days were advanced so far.
-	    int debugDaysCounter = 0; 
+	    //int debugDaysCounter = 0; 
 	    //// Write the necessary initialization code, and replace the condition
 	    //// of the while loop with the necessary condition 
+		int sundays = 0;
 	 	while (year != 2000) 
 	 	{
 	 		//// Write the body of the while 		
-	 		advance(dayOfMonth, month, year);
-	 		debugDaysCounter++;
+	 		sundays+=advance(dayOfMonth, month, year);
+			year++;
+	 		//debugDaysCounter++;
 	 		//// If you want to stop the loop after n days, replace the condition of the
 	 		//// if statement with the condition (debugDaysCounter == n)
-	 		if (debugDaysCounter==1) { 
-	 			break;
-	 		}
-        }
+	 		//if (debugDaysCounter==1) { 
+	 			//break;
+	 		//}
+        	}
+		System.out.println("During the 20th century, " + sundays + " Sundays fell on the first day of the month");
 	 	//// Write the necessary ending code here
 	 }
 	
 	 // Advances the date (day, month, year) and the day-of-the-week.
 	 // If the month changes, sets the number of days in this month.
 	 // Side effects: changes the static variables dayOfMonth, month, year, dayOfWeek, nDaysInMonth.
-	 private static void advance(int day, int month, int year) {
+	 private static int advance(int day, int month, int year) {
+		 int sundays = 0;
 	 	for(int i =1; i<=12; i++)
 	 	{ 
 	 		for (int j = 1; j<=nDaysInMonth(i,year); j++)
 	 		{
 	 			if (dayOfWeek == 1)
 	 			{
-	 				System.out.println(j + "/" +month +"/" + year + " Sunday");
+					if (j ==1)
+	 				{
+	 					sundays++;
+	 				}
+	 				//System.out.println(j + "/" +month +"/" + year + " Sunday");
 	 				dayOfWeek++;
 	 			}
 	 			else if (dayOfWeek ==7)
 	 			{
-	 				System.out.println(j + "/" +month +"/" + year);
+	 				//System.out.println(j + "/" +month +"/" + year);
 	 				dayOfWeek=1;
 	 			}
 	 			else 
 	 			{
-	 				System.out.println(j + "/" +month +"/" + year);
+	 				//System.out.println(j + "/" +month +"/" + year);
 	 				dayOfWeek++;
 	 			}
 	 			
@@ -62,6 +70,7 @@ public class Calendar1 {
 	 		month++;
 		}
 		year++;
+		 return sundays;
 }
 			
 		 
